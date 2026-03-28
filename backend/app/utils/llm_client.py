@@ -7,8 +7,12 @@ import json
 import re
 from typing import Optional, Dict, Any, List
 from openai import OpenAI
+from bleach import clean
 
 from ..config import Config
+
+
+"""LLM Client for OpenAI-compatible APIs with input sanitization."""
 
 
 class LLMClient:
@@ -51,16 +55,24 @@ class LLMClient:
         Returns:
             模型响应文本
         """
+        # Sanitize user inputs to prevent prompt injection
+        sanitized_messages = []
+        for msg in messages:
+            if isinstance(msg, dict) and 'content' in msg:
+                # Clean HTML and potentially malicious content
+                msg['content'] = clean(msg['content'], tags=[], strip=True)
+            sanitized_messages.append(msg)
+
         kwargs = {
             "model": self.model,
-            "messages": messages,
+            "messages": sanitized_messages,
             "temperature": temperature,
             "max_tokens": max_tokens,
         }
-        
+
         if response_format:
             kwargs["response_format"] = response_format
-        
+
         response = self.client.chat.completions.create(**kwargs)
         content = response.choices[0].message.content
         # 部分模型（如MiniMax M2.5）会在content中包含<think>思考内容，需要移除

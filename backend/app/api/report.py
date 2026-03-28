@@ -22,6 +22,7 @@ logger = get_logger('mirofish.api.report')
 # ============== 报告生成接口 ==============
 
 @report_bp.route('/generate', methods=['POST'])
+@jwt_required()
 def generate_report():
     """
     生成模拟分析报告（异步任务）

@@ -1338,7 +1338,7 @@ const InterviewDisplay = {
       // 支持两种编号格式：
       // 1. "问题X：" 或 "问题X:" （中文格式，后端新格式）
       // 2. "1. " 或 "\n1. " （数字+点，旧格式兼容）
-      let matches = []
+      const matches = []
       let match
 
       // 优先尝试 "问题X：" 格式
@@ -1870,7 +1870,7 @@ const renderMarkdown = (content) => {
   if (!content) return ''
   
   // 去掉开头的二级标题（## xxx），因为章节标题已在外层显示
-  let processedContent = content.replace(/^##\s+.+\n+/, '')
+  const processedContent = content.replace(/^##\s+.+\n+/, '')
   
   // 处理代码块
   let html = processedContent.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre class="code-block"><code>$2</code></pre>')
