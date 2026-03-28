@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   base: '/', // Use absolute paths for Vercel
   build: {
-    outDir: '../dist',
+    outDir: './dist',
     rollupOptions: {
       output: {
         manualChunks: (id) => {
