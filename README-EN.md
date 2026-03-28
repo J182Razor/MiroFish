@@ -93,7 +93,23 @@ Click the image to watch MiroFish's deep prediction of the lost ending based on 
 
 ## 🚀 Quick Start
 
-### Option 1: Source Code Deployment (Recommended)
+### Option 1: Vercel Frontend + Backend Deployment (Recommended)
+
+#### Frontend Deployment (Vercel)
+1. **Deploy to Vercel**: Click the deploy button or run `npm run deploy`
+2. **Configure Environment Variables**:
+   - Set `VITE_API_BASE_URL` to your backend URL (e.g., `https://mirofish-backend.onrender.com`)
+
+#### Backend Deployment (Render/PythonAnywhere/etc.)
+1. **Deploy Python backend** to Render, Railway, or PythonAnywhere
+2. **Set environment variables** in your deployment platform:
+   ```env
+   LLM_API_KEY=your_api_key
+   ZEP_API_KEY=your_zep_key
+   JWT_SECRET_KEY=your_secure_jwt_secret
+   ```
+
+### Option 2: Source Code Deployment
 
 #### Prerequisites
 
@@ -162,7 +178,7 @@ npm run backend   # Start backend only
 npm run frontend  # Start frontend only
 ```
 
-### Option 2: Docker Deployment
+### Option 3: Docker Deployment
 
 ```bash
 # 1. Configure environment variables (same as source deployment)
