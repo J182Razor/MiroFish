@@ -7,7 +7,7 @@
       <!-- 中间步骤指示器 -->
       <div class="nav-center">
         <div class="step-badge">STEP 01</div>
-        <div class="step-name">图谱构建</div>
+        <div class="step-name">Graph Building</div>
       </div>
 
       <div class="nav-status">
@@ -23,7 +23,7 @@
         <div class="panel-header">
           <div class="header-left">
             <span class="header-deco">◆</span>
-            <span class="header-title">实时知识图谱</span>
+            <span class="header-title">Real-time Knowledge Graph</span>
           </div>
           <div class="header-right">
             <template v-if="graphData">
@@ -50,7 +50,7 @@
             <!-- 构建中提示 -->
             <div v-if="currentPhase === 1" class="graph-building-hint">
               <span class="building-dot"></span>
-              实时更新中...
+              Updating in real-time...
             </div>
             
             <!-- 节点/边详情面板 -->
@@ -190,7 +190,7 @@
               </svg>
             </div>
             <p class="waiting-text">等待本体生成</p>
-            <p class="waiting-hint">生成完成后将自动开始构建图谱</p>
+            <p class="waiting-hint">Graph building will start automatically after generation completes</p>
           </div>
           
           <!-- 构建中但还没有数据 -->
@@ -200,7 +200,7 @@
               <div class="loading-ring"></div>
               <div class="loading-ring"></div>
             </div>
-            <p class="waiting-text">图谱构建中</p>
+            <p class="waiting-text">Building Graph</p>
             <p class="waiting-hint">数据即将显示...</p>
           </div>
           
@@ -225,7 +225,7 @@
       <div class="right-panel" :class="{ 'hidden': isFullScreen }">
         <div class="panel-header dark-header">
           <span class="header-icon">▣</span>
-          <span class="header-title">构建流程</span>
+          <span class="header-title">Build Process</span>
         </div>
 
         <div class="process-content">
@@ -246,7 +246,7 @@
               <div class="detail-section">
                 <div class="detail-label">接口说明</div>
                 <div class="detail-content">
-                  上传文档后，LLM分析文档内容，自动生成适合舆论模拟的本体结构（实体类型 + 关系类型）
+                  After uploading documents, LLM analyzes content and automatically generates ontology structure suitable for social simulation (entity types + relationship types)
                 </div>
               </div>
               
@@ -305,7 +305,7 @@
             <div class="phase-header">
               <span class="phase-num">02</span>
               <div class="phase-info">
-                <div class="phase-title">图谱构建</div>
+                <div class="phase-title">Graph Building</div>
                 <div class="phase-api">/api/graph/build</div>
               </div>
               <span class="phase-status" :class="getPhaseStatusClass(1)">
@@ -317,7 +317,7 @@
               <div class="detail-section">
                 <div class="detail-label">接口说明</div>
                 <div class="detail-content">
-                  基于生成的本体，将文档分块后调用 Zep API 构建知识图谱，提取实体和关系
+                  Based on generated ontology, chunk documents and call Zep API to build knowledge graph, extracting entities and relationships
                 </div>
               </div>
               
@@ -363,8 +363,8 @@
             <div class="phase-header">
               <span class="phase-num">03</span>
               <div class="phase-info">
-                <div class="phase-title">构建完成</div>
-                <div class="phase-api">准备进入下一步骤</div>
+                <div class="phase-title">Build Complete</div>
+                <div class="phase-api">Ready for next step</div>
               </div>
               <span class="phase-status" :class="getPhaseStatusClass(2)">
                 {{ getPhaseStatusText(2) }}
@@ -375,7 +375,7 @@
           <!-- 下一步按钮 -->
           <div class="next-step-section" v-if="currentPhase >= 2">
             <button class="next-step-btn" @click="goToNextStep" :disabled="currentPhase < 2">
-              进入环境搭建
+              Go to Environment Setup
               <span class="btn-arrow">→</span>
             </button>
           </div>

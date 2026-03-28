@@ -11,7 +11,7 @@
     </nav>
 
     <div class="main-content">
-      <!-- 上半部分：Hero 区域 -->
+        <!-- Upper Section: Hero Area -->
       <section class="hero-section">
         <div class="hero-left">
           <div class="tag-row">
@@ -48,9 +48,9 @@
         </div>
       </section>
 
-      <!-- 下半部分：双栏布局 -->
+        <!-- Lower Section: Two-Column Layout -->
       <section class="dashboard-section">
-        <!-- 左栏：状态与步骤 -->
+          <!-- Left Panel: Status and Steps -->
         <div class="left-panel">
           <div class="panel-header">
             <span class="status-dot">■</span> 系统状态
@@ -61,7 +61,7 @@
           Upload documents to build knowledge graphs and start AI-powered predictions.
         </p>
           
-          <!-- 数据指标卡片 -->
+          <!-- Metrics Cards -->
           <div class="metrics-row">
             <div class="metric-card">
               <div class="metric-value">Low Cost</div>
@@ -73,7 +73,7 @@
             </div>
           </div>
 
-          <!-- 项目模拟步骤介绍 (新增区域) -->
+          <!-- Project Simulation Steps Introduction (New Area) -->
           <div class="steps-container">
             <div class="steps-header">
                 <span class="diamond-icon">◇</span> Workflow Sequence
@@ -118,10 +118,10 @@
           </div>
         </div>
 
-        <!-- 右栏：交互控制台 -->
+        <!-- Right Panel: Interactive Console -->
         <div class="right-panel">
           <div class="console-box">
-            <!-- 上传区域 -->
+            <!-- Upload Area -->
             <div class="console-section">
               <div class="console-header">
                 <span class="console-label">01 / Seed Data</span>
@@ -153,16 +153,16 @@
                 </div>
 
                 <div v-else class="file-list">
-                   <div v-for="(file, index) in files" :key="index" class="file-item">
-                     <span class="file-icon">📄</span>
-                     <span class="file-name">{{ file.name }}</span>
-                     <button @click.stop="removeFile(index)" class="remove-btn">×</button>
-                   </div>
+                  <div v-for="(file, index) in files" :key="index" class="file-item">
+                    <span class="file-icon">📄</span>
+                    <span class="file-name">{{ file.name }}</span>
+                    <button @click.stop="removeFile(index)" class="remove-btn">×</button>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- 分割线 -->
+            <!-- Divider -->
             <div class="console-divider">
               <span>Input Parameters</span>
             </div>
@@ -203,12 +203,14 @@
       <!-- Project History Database -->
       <HistoryDatabase />
     </div>
+  </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import HistoryDatabase from '../components/HistoryDatabase.vue'
+import SkeletonLoader from '../components/SkeletonLoader.vue'
 
 const router = useRouter()
 
