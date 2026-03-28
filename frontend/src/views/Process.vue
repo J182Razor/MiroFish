@@ -611,7 +611,7 @@ const handleNewProject = async () => {
       error.value = response.error || '本体生成失败'
     }
   } catch (err) {
-    console.error('Handle new project error:', err)
+    // Error handled silently for production
     error.value = '项目初始化失败: ' + (err.message || '未知错误')
   } finally {
     loading.value = false
@@ -648,7 +648,7 @@ const loadProject = async () => {
       error.value = response.error || '加载项目失败'
     }
   } catch (err) {
-    console.error('Load project error:', err)
+    // Error handled silently for production
     error.value = '加载项目失败: ' + (err.message || '未知错误')
   } finally {
     loading.value = false
@@ -701,7 +701,7 @@ const startBuildGraph = async () => {
       buildProgress.value = null
     }
   } catch (err) {
-    console.error('Build graph error:', err)
+    // Error handled silently for production
     error.value = '启动图谱构建失败: ' + (err.message || '未知错误')
     buildProgress.value = null
   }
@@ -754,7 +754,7 @@ const fetchGraphData = async () => {
         const newNodeCount = newData.node_count || newData.nodes?.length || 0
         const oldNodeCount = graphData.value?.node_count || graphData.value?.nodes?.length || 0
         
-        console.log('Fetching graph data, nodes:', newNodeCount, 'edges:', newData.edge_count || newData.edges?.length || 0)
+        // Graph data fetch logged in development only
         
         // 数据有变化时更新渲染
         if (newNodeCount !== oldNodeCount || !graphData.value) {
@@ -765,7 +765,7 @@ const fetchGraphData = async () => {
       }
     }
   } catch (err) {
-    console.log('Graph data fetch:', err.message || 'not ready')
+    // Graph fetch error handled silently
   }
 }
 
@@ -794,10 +794,10 @@ const pollTaskStatus = async (taskId) => {
         message: task.message || '处理中...'
       }
       
-      console.log('Task status:', task.status, 'Progress:', task.progress)
+      // Task progress tracked silently
       
       if (task.status === 'completed') {
-        console.log('✅ 图谱构建完成，正在加载完整数据...')
+        // Graph build completion logged in development
         
         stopPolling()
         stopGraphPolling()
@@ -816,9 +816,9 @@ const pollTaskStatus = async (taskId) => {
           
           // 最终加载完整图谱数据
           if (projectResponse.data.graph_id) {
-            console.log('📊 加载完整图谱:', projectResponse.data.graph_id)
+            // Full graph loaded successfully
             await loadGraph(projectResponse.data.graph_id)
-            console.log('✅ 图谱加载完成')
+            // Graph loading completed
           }
         }
         
@@ -832,7 +832,7 @@ const pollTaskStatus = async (taskId) => {
       }
     }
   } catch (err) {
-    console.error('Poll task error:', err)
+    // Poll task error handled silently
   }
 }
 
@@ -855,7 +855,7 @@ const loadGraph = async (graphId) => {
       renderGraph()
     }
   } catch (err) {
-    console.error('Load graph error:', err)
+    // Graph loading error handled silently
   } finally {
     graphLoading.value = false
   }
@@ -864,13 +864,13 @@ const loadGraph = async (graphId) => {
 // 渲染图谱 (D3.js)
 const renderGraph = () => {
   if (!graphSvg.value || !graphData.value) {
-    console.log('Cannot render: svg or data missing')
+    // Graph rendering skipped - missing data
     return
   }
   
   const container = graphContainer.value
   if (!container) {
-    console.log('Cannot render: container missing')
+    // Graph rendering skipped - missing container
     return
   }
   
@@ -880,11 +880,11 @@ const renderGraph = () => {
   const height = (rect.height || 600) - 60
   
   if (width <= 0 || height <= 0) {
-    console.log('Cannot render: invalid dimensions', width, height)
+    // Graph rendering skipped - invalid dimensions
     return
   }
   
-  console.log('Rendering graph:', width, 'x', height)
+  // Rendering graph with dimensions
   
   const svg = d3.select(graphSvg.value)
     .attr('width', width)
@@ -898,7 +898,7 @@ const renderGraph = () => {
   const edgesData = graphData.value.edges || []
   
   if (nodesData.length === 0) {
-    console.log('No nodes to render')
+    // No graph nodes to render
     // 显示空状态
     svg.append('text')
       .attr('x', width / 2)
@@ -938,7 +938,7 @@ const renderGraph = () => {
       }
     }))
   
-  console.log('Nodes:', nodes.length, 'Edges:', edges.length)
+  // Graph nodes and edges counted
   
   // 颜色映射
   const types = [...new Set(nodes.map(n => n.type))]

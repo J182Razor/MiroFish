@@ -1,13 +1,13 @@
 <template>
   <div class="home-container">
-    <!-- 顶部导航栏 -->
+    <!-- Top Navigation Bar -->
     <nav class="navbar">
       <div class="nav-brand">MIROFISH</div>
-        <div class="nav-links">
-          <a href="https://github.com/666ghj/MiroFish" target="_blank" class="github-link" aria-label="Visit MiroFish GitHub repository">
-            GitHub <span class="arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
+      <div class="nav-links">
+        <a href="https://github.com/666ghj/MiroFish" target="_blank" class="github-link" aria-label="Visit MiroFish GitHub repository">
+          GitHub <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </nav>
 
     <div class="main-content">
@@ -124,11 +124,11 @@
             <!-- 上传区域 -->
             <div class="console-section">
               <div class="console-header">
-                <span class="console-label">01 / 现实种子</span>
-                <span class="console-meta">支持格式: PDF, MD, TXT</span>
+                <span class="console-label">01 / Seed Data</span>
+                <span class="console-meta">Supported formats: PDF, MD, TXT</span>
               </div>
               
-              <div 
+              <div
                 class="upload-zone"
                 :class="{ 'drag-over': isDragOver, 'has-files': files.length > 0 }"
                 @dragover.prevent="handleDragOver"
@@ -136,26 +136,26 @@
                 @drop.prevent="handleDrop"
                 @click="triggerFileInput"
               >
-            <input
-              type="file"
-              id="file-upload"
-              ref="fileInput"
-              @change="handleFileSelect"
-              accept=".pdf,.md,.txt,.markdown"
-              style="display: none"
-              aria-label="Upload file"
-            />
-                
+                <input
+                  type="file"
+                  id="file-upload"
+                  ref="fileInput"
+                  @change="handleFileSelect"
+                  accept=".pdf,.md,.txt,.markdown"
+                  style="display: none"
+                  aria-label="Upload file"
+                />
+
                 <div v-if="files.length === 0" class="upload-placeholder">
                   <div class="upload-icon">↑</div>
                   <div class="upload-title">Drag and drop files</div>
                   <div class="upload-hint">or click to browse</div>
                 </div>
-                
+
                 <div v-else class="file-list">
-                  <div v-for="(file, index) in files" :key="index" class="file-item">
-                    <span class="file-icon">📄</span>
-                    <span class="file-name">{{ file.name }}</span>
+                   <div v-for="(file, index) in files" :key="index" class="file-item">
+                     <span class="file-icon">📄</span>
+                     <span class="file-name">{{ file.name }}</span>
                      <button @click.stop="removeFile(index)" class="remove-btn">×</button>
                    </div>
                 </div>
@@ -164,7 +164,7 @@
 
             <!-- 分割线 -->
             <div class="console-divider">
-              <span>输入参数</span>
+              <span>Input Parameters</span>
             </div>
 
             <!-- 输入区域 -->
