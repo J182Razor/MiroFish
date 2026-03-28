@@ -6,7 +6,7 @@
 1. **Connect to Vercel**: Link your GitHub repository to Vercel
 2. **Configure Build Settings** (required):
    - **Framework Preset**: `Vite`
-   - **Root Directory**: `frontend` ← **This is critical, set this in Vercel Dashboard**
+   - **Root Directory**: `frontend` ← **CRITICAL: Set this in Vercel Dashboard Settings → General**
    - Build Command, Output Directory, and Install Command will auto-detect from `frontend/vercel.json` and `frontend/package.json`
 
 ### Environment Variables
