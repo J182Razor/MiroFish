@@ -1,8 +1,7 @@
 {
-  "installCommand": "npm install",
-  "buildCommand": "npm run build",
+  "installCommand": "npm ci",
+  "buildCommand": "npx vite build --mode production",
   "outputDirectory": "dist",
-  "framework": "vite",
   "routes": [
     {
       "src": "/api/(.*)",

@@ -5,10 +5,10 @@
 ### Automatic Deployment
 1. **Connect to Vercel**: Link your GitHub repository to Vercel
 2. **Configure Build Settings** (required):
-   - **Framework Preset**: `Vite`
+   - **Framework Preset**: `Other` (since we're using custom commands)
    - **Root Directory**: `frontend` ← **CRITICAL: Set this in Vercel Dashboard Settings → General**
-   - Build Command: `npm run build` (explicitly set in vercel.json)
-   - Install Command: `npm install` (explicitly set in vercel.json)
+   - Install Command: `npm ci` (clean install for CI/CD)
+   - Build Command: `npx vite build --mode production` (uses npx to ensure vite availability)
    - Output Directory: `dist` (explicitly set in vercel.json)
 
 ### Environment Variables
