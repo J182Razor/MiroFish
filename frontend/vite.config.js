@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  base: './', // Use relative paths for assets
   build: {
     rollupOptions: {
       output: {
@@ -29,7 +30,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:5001',
+        target: process.env.VITE_API_BASE_URL || 'http://localhost:5001',
         changeOrigin: true,
         secure: false
       }
