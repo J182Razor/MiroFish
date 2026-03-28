@@ -1,5 +1,5 @@
 <template>
-  <main id="main-content" class="home-container">
+  <div class="home-container">
     <!-- Top Navigation Bar -->
     <nav class="navbar">
       <div class="nav-brand">MIROFISH</div>
@@ -202,7 +202,7 @@
 
       <!-- Project History Database -->
       <HistoryDatabase />
-    </main>
+    </div>
   </div>
 </template>
 
@@ -210,6 +210,7 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import HistoryDatabase from '../components/HistoryDatabase.vue'
+import SkeletonLoader from '../components/SkeletonLoader.vue'
 
 const router = useRouter()
 
