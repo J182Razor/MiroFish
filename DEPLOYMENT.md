@@ -7,7 +7,9 @@
 2. **Configure Build Settings** (required):
    - **Framework Preset**: `Vite`
    - **Root Directory**: `frontend` ← **CRITICAL: Set this in Vercel Dashboard Settings → General**
-   - Build Command, Output Directory, and Install Command will auto-detect from `frontend/vercel.json` and `frontend/package.json`
+   - Build Command: `npm run build` (explicitly set in vercel.json)
+   - Install Command: `npm install` (explicitly set in vercel.json)
+   - Output Directory: `dist` (explicitly set in vercel.json)
 
 ### Environment Variables
 Set the following in Vercel dashboard:
