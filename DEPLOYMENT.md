@@ -7,8 +7,7 @@
 2. **Configure Build Settings** (required):
    - **Framework Preset**: `Other` (since we're using custom commands)
    - **Root Directory**: `frontend` ← **CRITICAL: Set this in Vercel Dashboard Settings → General**
-   - Install Command: `npm ci` (clean install for CI/CD)
-   - Build Command: `npx vite build --mode production` (uses npx to ensure vite availability)
+   - Build Command: `cd frontend && npm install && npm run build` (installs frontend deps and builds)
    - Output Directory: `dist` (explicitly set in vercel.json)
 
 ### Environment Variables
