@@ -257,6 +257,7 @@ def generate_ontology():
 # ============== 接口2：构建图谱 ==============
 
 @graph_bp.route('/build', methods=['POST'])
+@jwt_required()
 def build_graph():
     """
     接口2：根据project_id构建图谱

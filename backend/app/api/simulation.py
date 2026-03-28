@@ -2135,6 +2135,7 @@ def get_simulation_comments(simulation_id: str):
 # ============== Interview 采访接口 ==============
 
 @simulation_bp.route('/interview', methods=['POST'])
+@jwt_required()
 def interview_agent():
     """
     采访单个Agent
