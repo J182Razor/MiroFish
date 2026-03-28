@@ -1,4 +1,5 @@
 <template>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <router-view />
     <div class="skip-link">
       <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -54,15 +55,15 @@ select:focus {
   top: -40px;
   left: 6px;
   z-index: 1000;
-}
-
-.skip-link a.sr-only-focusable:focus {
-  top: 6px;
   background: #000;
   color: #fff;
   padding: 8px;
   text-decoration: none;
   border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 6px;
 }
 
 #app {
