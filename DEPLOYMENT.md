@@ -5,10 +5,9 @@
 ### Automatic Deployment
 1. **Connect to Vercel**: Link your GitHub repository to Vercel
 2. **Configure Build Settings** (required):
-   - **Framework Preset**: `Other`
-   - **Root Directory**: Leave blank (root)
-   - Build Command: Will auto-detect from `vercel.json`
-   - **DO NOT set any custom Output Directory in Vercel settings** (vercel.json handles this)
+   - **Framework Preset**: `Vite`
+   - **Root Directory**: `frontend` ← **This is critical, set this in Vercel Dashboard**
+   - Build Command, Output Directory, and Install Command will auto-detect from `frontend/vercel.json` and `frontend/package.json`
 
 ### Environment Variables
 Set the following in Vercel dashboard:
