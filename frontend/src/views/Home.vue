@@ -136,15 +136,19 @@
                 @drop.prevent="handleDrop"
                 @click="triggerFileInput"
               >
-                <input
-                  ref="fileInput"
-                  type="file"
-                  multiple
-                  accept=".pdf,.md,.txt"
-                  @change="handleFileSelect"
-                  style="display: none"
-                  :disabled="loading"
-                />
+            <input
+              type="file"
+              id="file-upload"
+              ref="fileInput"
+              @change="handleFileSelect"
+              accept=".pdf,.md,.txt,.markdown"
+              style="display: none"
+              aria-label="Upload file for knowledge graph building"
+              aria-describedby="upload-description"
+            />
+            <div id="upload-description" class="sr-only">
+              Upload PDF, Markdown, or text files up to 50MB to build a knowledge graph for AI simulation
+            </div>
                 
                 <div v-if="files.length === 0" class="upload-placeholder">
                   <div class="upload-icon">↑</div>
@@ -156,8 +160,8 @@
                   <div v-for="(file, index) in files" :key="index" class="file-item">
                     <span class="file-icon">📄</span>
                     <span class="file-name">{{ file.name }}</span>
-                    <button @click.stop="removeFile(index)" class="remove-btn">×</button>
-                  </div>
+                     <button @click.stop="removeFile(index)" class="remove-btn">×</button>
+                   </div>
                 </div>
               </div>
             </div>
@@ -203,7 +207,7 @@
       <!-- 历史项目数据库 -->
       <HistoryDatabase />
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>

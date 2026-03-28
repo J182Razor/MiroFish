@@ -85,7 +85,7 @@
                     <div v-for="(value, key) in selectedItem.data.attributes" :key="key" class="property-item">
                       <span class="property-key">{{ key }}:</span>
                       <span class="property-value">{{ value }}</span>
-                    </div>
+  </main>
                   </div>
                 </div>
                 
